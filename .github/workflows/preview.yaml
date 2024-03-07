@@ -7,7 +7,18 @@ on:
     branches-ignore:
       - main
 jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+
   Deploy-Preview:
+    needs: [Test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
