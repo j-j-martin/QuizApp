@@ -25,7 +25,7 @@ jobs:
       - run: npm test
 
   Deploy-Production:
-    needs: [Test]
+    needs: [Validate]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
