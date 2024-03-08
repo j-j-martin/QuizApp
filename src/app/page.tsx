@@ -1,61 +1,39 @@
-'use client';
+'use client'
+import { CardTitle, CardDescription, CardHeader, CardContent, Card } from '@/components/ui/card'
+import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
-import { ModeToggle } from '@/components/mode-toggle';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import { Container } from 'lucide-react';
-import { useState } from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-
-const LoginPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    // Hier können Sie die Logik für die Authentifizierung implementieren
-    console.log('Benutzername:', username);
-    console.log('Passwort:', password);
-    // Zum Beispiel: Eine API-Anfrage senden, um die Anmeldeinformationen zu überprüfen
-  };
-
+const handleLogin = () => {}
+export default function Component() {
+  const router = useRouter()
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-      }}>
-      <Card style={{ width: '400px', height: '600px' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '20px' }}>Login</h2>
-        <Input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder='Benutzername'
-          style={{ marginBottom: '10px' }}
-        />
-        <Input
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder='Passwort'
-          style={{ marginBottom: '20px' }}
-        />
-        <Button
-          onClick={handleLogin}
-          style={{ width: '100%' }}>
-          Anmelden
-        </Button>
-      </Card>
-    </div>
-  );
-};
-
-export default LoginPage;
+    <Card className='mx-auto max-w-md  mt-64 border-0'>
+      <CardHeader className='space-y-2 mb-4'>
+        <CardTitle className='text-2xl font-bold'>Login</CardTitle>
+        <CardDescription>Enter your email and password to login to your account</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <div className='space-y-4'>
+          <div className='space-y-2'>
+            <Label htmlFor='email'>Email</Label>
+            <Input id='email' placeholder='email adress' required type='email' />
+          </div>
+          <div className='space-y-2'>
+            <Label htmlFor='password'>Password</Label>
+            <Input id='password' placeholder='password' required type='password' />
+          </div>
+          <div>
+            <Button className='w-full mb-4 mt-8' type='submit' onClick={() => router.push('/UserPage')}>
+              Login
+            </Button>
+            <Button variant='outline' className='w-full' type='submit' onClick={() => router.push('/Registration')}>
+              Register
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
