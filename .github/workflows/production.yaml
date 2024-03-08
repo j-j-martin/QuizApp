@@ -24,6 +24,12 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Run Audit
+        run: npm audit
+
+  #      - name: Run Prettier check
+  #        run: npm run prettier:check:ci
+
   Deploy-Production:
     needs: [Validate]
     runs-on: ubuntu-latest
