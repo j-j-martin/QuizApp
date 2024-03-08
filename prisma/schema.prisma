@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Game {
+  id        String   @id @default(cuid())
+  published Boolean  @default(false)
+  GameMode  GameMode @default(SINGLEPLAYER)
+}
+
+model Question {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  answers   Answer[]
+}
+
+model Answer {
+  id         String   @id @default(cuid())
+  content    String
+  isCorrect  Boolean  @default(false)
+  createdAt  DateTime @default(now()) @map(name: "created_at")
+  updatedAt  DateTime @updatedAt @map(name: "updated_at")
+  Question   Question @relation(fields: [questionId], references: [id])
+  questionId String
+}
+
+model User {
+  id           String   @id @default(cuid())
+  firstName    String?
+  lastName     String?
+  role         Role     @default(USER)
+  email        String   @unique
+  passwordHash String
+  lastLogin    DateTime
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  updatedAt    DateTime @updatedAt @map(name: "updated_at")
+
+  @@map(name: "users")
+}
+
+enum GameMode {
+  SINGLEPLAYER
+  MULTIPLAYER
+}
+
+enum Role {
+  USER
+  ADMIN
+}
