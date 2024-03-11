@@ -12,4 +12,16 @@ if (process.env.NODE_ENV === 'production') {
   prisma = globalForPrisma.prisma
 }
 
-export default prisma
+export const db = prisma
+export interface DatabaseUser {
+  id: string
+  username: string
+  githubId: string
+  firstName: string
+  lastName: string
+  email: string
+  emailVerified: Date
+  image: string
+  createdAt: Date
+  updatedAt: Date
+}
