@@ -4,7 +4,7 @@
 
 import { NextResponse } from 'next/server'
 
-export async function GET(): Promise<Response> {
+export async function GET(): Promise<NextResponse> {
   //const state = generateState()
   //const url = await github.createAuthorizationURL(state)
 
