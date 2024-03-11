@@ -2,6 +2,8 @@
 // import { github } from '@/lib/auth'
 // import { cookies } from 'next/headers'
 
+import { NextResponse } from 'next/server'
+
 export async function GET(): Promise<Response> {
   //const state = generateState()
   //const url = await github.createAuthorizationURL(state)
@@ -14,6 +16,6 @@ export async function GET(): Promise<Response> {
   //   sameSite: 'lax',
   // })
 
-  //return Response.redirect(/*url*/ '/')
-  return Response.json(/*url*/ {})
+  return NextResponse.redirect(/*url*/ '/')
+  //return Response.json(/*url*/ {})
 }
