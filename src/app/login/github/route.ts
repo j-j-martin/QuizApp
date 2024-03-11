@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server'
 
 export async function GET(): Promise<NextResponse> {
   const state = generateState()
-  const url = await github.createAuthorizationURL(state)
+  //const url = await github.createAuthorizationURL(state)
 
   cookies().set('github_oauth_state', state, {
     path: '/',
@@ -16,6 +16,6 @@ export async function GET(): Promise<NextResponse> {
     sameSite: 'lax',
   })
 
-  return NextResponse.redirect(url)
+  return NextResponse.redirect(/*url*/ 'https://github.com')
   //return Response.json(/*url*/ {})
 }
