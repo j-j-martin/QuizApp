@@ -14,5 +14,6 @@ export async function GET(): Promise<Response> {
   //   sameSite: 'lax',
   // })
 
-  return Response.redirect(/*url*/ '/')
+  //return Response.redirect(/*url*/ '/')
+  return Response.json(/*url*/ {})
 }
