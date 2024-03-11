@@ -26,35 +26,35 @@ export async function GET(request: Request): Promise<Response> {
     })
     const githubUser: GitHubUser = await githubUserResponse.json()
 
-    const existingUser = (await db.user.findFirst({
-      where: {
-        githubId: githubUser.id,
-      },
-    })) as DatabaseUser | undefined
+    // const existingUser = (await db.user.findFirst({
+    //   where: {
+    //     githubId: githubUser.id,
+    //   },
+    // })) as DatabaseUser | undefined
 
-    if (existingUser) {
-      const session = await lucia.createSession(existingUser.id, {})
-      const sessionCookie = lucia.createSessionCookie(session.id)
-      cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
-      return new Response(null, {
-        status: 302,
-        headers: {
-          Location: '/',
-        },
-      })
-    }
+    // if (existingUser) {
+    //   const session = await lucia.createSession(existingUser.id, {})
+    //   const sessionCookie = lucia.createSessionCookie(session.id)
+    //   cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
+    //   return new Response(null, {
+    //     status: 302,
+    //     headers: {
+    //       Location: '/',
+    //     },
+    //   })
+    // }
 
-    const userId = generateId(15)
-    await db.user.create({
-      data: {
-        id: userId,
-        githubId: githubUser.id,
-        username: githubUser.login,
-      },
-    })
-    const session = await lucia.createSession(userId, {})
-    const sessionCookie = lucia.createSessionCookie(session.id)
-    cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
+    // const userId = generateId(15)
+    // await db.user.create({
+    //   data: {
+    //     id: userId,
+    //     githubId: githubUser.id,
+    //     username: githubUser.login,
+    //   },
+    // })
+    // const session = await lucia.createSession(userId, {})
+    // const sessionCookie = lucia.createSessionCookie(session.id)
+    // cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
     return new Response(null, {
       status: 302,
       headers: {
@@ -68,8 +68,6 @@ export async function GET(request: Request): Promise<Response> {
         status: 400,
       })
     }
-    console.log('hallo')
-    console.log(e)
     return new Response(null, {
       status: 500,
     })
