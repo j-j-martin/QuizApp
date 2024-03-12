@@ -7,14 +7,6 @@ import { NextResponse } from 'next/server'
 export async function GET(): Promise<NextResponse> {
   const state = generateState()
   const url = await github.createAuthorizationURL(state)
-  if (process.env.GITHUB_CLIENT_ID && process.env.GITHUB_CLIENT_SECRET) {
-    // Environment variables are accessible
-    console.log('GitHub client ID and secret are accessible.')
-  } else {
-    // Environment variables are not accessible
-    console.error('GitHub client ID and/or secret are not accessible.')
-  }
-  console.log(url)
 
   cookies().set('github_oauth_state', state, {
     path: '/',
@@ -24,6 +16,6 @@ export async function GET(): Promise<NextResponse> {
     sameSite: 'lax',
   })
 
-  return NextResponse.redirect(/*url*/ 'https://github.com')
+  return NextResponse.redirect(url)
   //return Response.json(/*url*/ {})
 }
