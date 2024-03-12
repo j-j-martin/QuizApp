@@ -14,6 +14,7 @@ export async function GET(): Promise<NextResponse> {
     // Environment variables are not accessible
     console.error('GitHub client ID and/or secret are not accessible.')
   }
+  console.log(url)
 
   cookies().set('github_oauth_state', state, {
     path: '/',
