@@ -18,43 +18,43 @@ export async function GET(request: Request): Promise<Response> {
   }
 
   try {
-    // const tokens = await github.validateAuthorizationCode(code)
-    // const githubUserResponse = await fetch('https://api.github.com/user', {
-    //   headers: {
-    //     Authorization: `Bearer ${tokens.accessToken}`,
-    //   },
-    // })
-    // const githubUser: GitHubUser = await githubUserResponse.json()
+    const tokens = await github.validateAuthorizationCode(code)
+    const githubUserResponse = await fetch('https://api.github.com/user', {
+      headers: {
+        Authorization: `Bearer ${tokens.accessToken}`,
+      },
+    })
+    const githubUser: GitHubUser = await githubUserResponse.json()
 
-    // const existingUser = (await db.user.findFirst({
-    //   where: {
-    //     githubId: githubUser.id,
-    //   },
-    // })) as DatabaseUser | undefined
+    const existingUser = (await db.user.findFirst({
+      where: {
+        githubId: githubUser.id,
+      },
+    })) as DatabaseUser | undefined
 
-    // if (existingUser) {
-    //   const session = await lucia.createSession(existingUser.id, {})
-    //   const sessionCookie = lucia.createSessionCookie(session.id)
-    //   cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
-    //   return new Response(null, {
-    //     status: 302,
-    //     headers: {
-    //       Location: '/',
-    //     },
-    //   })
-    // }
+    if (existingUser) {
+      const session = await lucia.createSession(existingUser.id, {})
+      const sessionCookie = lucia.createSessionCookie(session.id)
+      cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
+      return new Response(null, {
+        status: 302,
+        headers: {
+          Location: '/',
+        },
+      })
+    }
 
-    // const userId = generateId(15)
-    // await db.user.create({
-    //   data: {
-    //     id: userId,
-    //     githubId: githubUser.id,
-    //     username: githubUser.login,
-    //   },
-    // })
-    // const session = await lucia.createSession(userId, {})
-    // const sessionCookie = lucia.createSessionCookie(session.id)
-    // cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
+    const userId = generateId(15)
+    await db.user.create({
+      data: {
+        id: userId,
+        githubId: githubUser.id,
+        username: githubUser.login,
+      },
+    })
+    const session = await lucia.createSession(userId, {})
+    const sessionCookie = lucia.createSessionCookie(session.id)
+    cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
     return new Response(null, {
       status: 302,
       headers: {
