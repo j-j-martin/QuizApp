@@ -6,7 +6,8 @@ import { NextResponse } from 'next/server'
 
 export async function GET(): Promise<NextResponse> {
   const state = generateState()
-  //const url = await github.createAuthorizationURL(state)
+  const url = await github.createAuthorizationURL(state)
+  console.log(url)
 
   cookies().set('github_oauth_state', state, {
     path: '/',
