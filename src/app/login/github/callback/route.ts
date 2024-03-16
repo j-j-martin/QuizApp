@@ -16,7 +16,7 @@ export async function GET(request: Request): Promise<Response> {
       status: 400,
     })
   }
-
+  
   try {
     const tokens = await github.validateAuthorizationCode(code)
     const githubUserResponse = await fetch('https://api.github.com/user', {
@@ -25,13 +25,18 @@ export async function GET(request: Request): Promise<Response> {
       },
     })
     const githubUser: GitHubUser = await githubUserResponse.json()
-
-    const existingUser = (await db.user.findFirst({
+    
+    let existingUser : DatabaseUser | undefined = undefined
+    try {
+      existingUser = (await db.user.findFirst({
       where: {
         githubId: githubUser.id,
       },
     })) as DatabaseUser | undefined
-
+    } catch(e) {
+      console.log("error fetching user")
+    }
+      
     if (existingUser) {
       const session = await lucia.createSession(existingUser.id, {})
       const sessionCookie = lucia.createSessionCookie(session.id)
@@ -43,15 +48,20 @@ export async function GET(request: Request): Promise<Response> {
         },
       })
     }
-
+    
     const userId = generateId(15)
-    await db.user.create({
+    try {
+      await db.user.create({
       data: {
         id: userId,
         githubId: githubUser.id,
         username: githubUser.login,
       },
     })
+    } catch (e) {
+      console.log(e)
+    }
+    
     const session = await lucia.createSession(userId, {})
     const sessionCookie = lucia.createSessionCookie(session.id)
     cookies().set(sessionCookie.name, sessionCookie.value, sessionCookie.attributes)
@@ -75,7 +85,7 @@ export async function GET(request: Request): Promise<Response> {
 }
 
 interface GitHubUser {
-  id: string
+  id: number
   login: string
   email: string
 }
