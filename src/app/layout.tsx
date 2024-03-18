@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Bacasime_Antique, Inter } from 'next/font/google'
 import '../styles/globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
-import { BackgroundBeams } from '@/components/ui/background-beams'
 
 const inter = Inter({ subsets: ['latin'] })
 
