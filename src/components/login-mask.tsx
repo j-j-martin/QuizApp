@@ -1,38 +1,60 @@
-import { Label } from './ui/label'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
+'use client'
+
 import { Button } from './ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { Icons } from './ui/icons'
 import { useRouter } from 'next/navigation'
-import React from 'react'
 
 export default function Loginmask() {
   const router = useRouter()
   return (
-    <Card className='mx-auto max-w-md  my-auto mt-56 border-gray-100 relative z-2'>
-      <CardHeader className='space-y-2 mb-4'>
-        <CardTitle className='text-2xl font-bold'>Login</CardTitle>
-        <CardDescription>Enter your email and password to login to your account</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className='space-y-4'>
-          <div className='space-y-2'>
+    <div>
+      <Card className='z-10 relative max-w-md max-h-lg mx-auto my-auto mt-56 border-style-none'>
+        <CardHeader className='space-y-1'>
+          <CardTitle className='text-2xl'>Login</CardTitle>
+          <CardDescription>Enter your email below to Log in</CardDescription>
+        </CardHeader>
+        <CardContent className='grid gap-4'>
+          <div className='grid grid-cols-2 gap-6'>
+            <Button variant='outline'>
+              <Icons.gitHub className='mr-5 h-6 w-5' />
+              Github
+            </Button>
+            <Button variant='outline'>
+              <Icons.google className='mr-2 h-5 w-5' />
+              Google
+            </Button>
+          </div>
+          <div className='relative'>
+            <div className='absolute inset-0 flex items-center'>
+              <span className='w-full border-t' />
+            </div>
+            <div className='relative flex justify-center text-xs uppercase'>
+              <span className='bg-background px-2 text-muted-foreground'>Or continue with</span>
+            </div>
+          </div>
+          <div className='grid gap-2'>
             <Label htmlFor='email'>Email</Label>
-            <Input id='email' placeholder='email adress' required type='email' />
+            <Input id='email' type='email' placeholder='m@example.com' />
           </div>
-          <div className='space-y-2'>
+          <div className='grid gap-2'>
             <Label htmlFor='password'>Password</Label>
-            <Input id='password' placeholder='password' required type='password' />
+            <Input id='password' type='password' />
           </div>
-          <div>
-            <Button className='w-full mb-4 mt-8' type='submit' onClick={() => router.push('/UserPage')}>
+        </CardContent>
+        <CardFooter>
+          <div className='w-full'>
+            <Button className='w-full mb-4' onClick={() => router.push('/UserPage')}>
               Login
             </Button>
-            <Button variant='outline' className='w-full' type='submit' onClick={() => router.push('/Registration')}>
+            <Button variant='outline' className='w-full' onClick={() => router.push('/Registration')}>
               Register
             </Button>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardFooter>
+      </Card>
+    </div>
   )
 }
