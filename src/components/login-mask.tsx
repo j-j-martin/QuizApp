@@ -8,7 +8,7 @@ import React from 'react'
 export default function Loginmask() {
   const router = useRouter()
   return (
-    <Card className='mx-auto max-w-md  mt-64 border-gray-100 relative z-2'>
+    <Card className='mx-auto max-w-md  my-auto mt-56 border-gray-100 relative z-2'>
       <CardHeader className='space-y-2 mb-4'>
         <CardTitle className='text-2xl font-bold'>Login</CardTitle>
         <CardDescription>Enter your email and password to login to your account</CardDescription>

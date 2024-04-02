@@ -1,44 +1,61 @@
 'use client'
-import { CardTitle, CardDescription, CardHeader, CardContent, Card } from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+
+import { Button } from './ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card'
+import { Input } from './ui/input'
+import { Label } from './ui/label'
+import { Icons } from './ui/icons'
 import { useRouter } from 'next/navigation'
-import Navbar from '@/components/navbar'
+import { BackgroundGradient } from './ui/background-gradient'
 
 export default function RegistrationMask() {
   const router = useRouter()
   return (
     <div>
-      <Card className='mx-auto max-w-md  mt-64 relative z-3'>
-        <CardHeader className='space-y-2 mb-4'>
-          <CardTitle className='text-2xl font-bold'>Register</CardTitle>
-          <CardDescription>Enter your email and password to create an account</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className='space-y-4'>
-            <div className='space-y-2'>
-              <Label htmlFor='email'>Email</Label>
-              <Input id='email' placeholder='email adress' required type='email' />
-            </div>
-            <div className='space-y-4'>
-              <div>
-                <Label htmlFor='password'>Password</Label>
-                <Input id='password' placeholder='password' required type='password' />
-              </div>
-              <div>
-                <Label htmlFor='password'>Repeat Password</Label>
-                <Input id='password' placeholder='password' required type='password' />
-              </div>
-            </div>
-            <div>
-              <Button className='w-full' type='submit' onClick={() => router.push('/Registration')}>
-                Register
+      <BackgroundGradient className='rounded-[22px] maw-w-md mx-auto my-auto p-4 sm:p-10 bg-white dark:bg-zinc-900'>
+        <Card className='z-10 relative max-w-md max-h-lg mx-auto my-auto mt-56 border-style-none'>
+          <CardHeader className='space-y-1'>
+            <CardTitle className='text-2xl'>Create an account</CardTitle>
+            <CardDescription>Enter your email below to create your account</CardDescription>
+          </CardHeader>
+          <CardContent className='grid gap-4'>
+            <div className='grid grid-cols-2 gap-6'>
+              <Button variant='outline'>
+                <Icons.gitHub className='mr-5 h-6 w-5' />
+                Github
+              </Button>
+              <Button variant='outline'>
+                <Icons.google className='mr-2 h-5 w-5' />
+                Google
               </Button>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+            <div className='relative'>
+              <div className='absolute inset-0 flex items-center'>
+                <span className='w-full border-t' />
+              </div>
+              <div className='relative flex justify-center text-xs uppercase'>
+                <span className='bg-background px-2 text-muted-foreground'>Or continue with</span>
+              </div>
+            </div>
+            <div className='grid gap-2'>
+              <Label htmlFor='email'>Email</Label>
+              <Input id='email' type='email' placeholder='m@example.com' />
+            </div>
+            <div className='grid gap-2'>
+              <Label htmlFor='password'>Password</Label>
+              <Input id='password' type='password' />
+            </div>
+          </CardContent>
+          <CardFooter>
+            <div className='w-full'>
+              <Button className='w-full mb-4'>Create account</Button>
+              <Button variant='outline' className='w-full' onClick={() => router.push('/')}>
+                Back
+              </Button>
+            </div>
+          </CardFooter>
+        </Card>
+      </BackgroundGradient>
     </div>
   )
 }
