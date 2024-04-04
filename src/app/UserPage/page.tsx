@@ -4,8 +4,10 @@ import { Button } from '@/components/ui/button'
 import React from 'react'
 import { LampContainer } from '@/components/ui/lamp'
 import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
 
 const UserPage = () => {
+  const router = useRouter()
   return (
     <div className='flex flex-col w-full h-[100vh] content-center relative z-2'>
       <LampContainer>
@@ -22,7 +24,15 @@ const UserPage = () => {
           <div className='mb-32'>
             Wilkommen <br /> Username
           </div>
-          <Button className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105'>Spiel Starten</Button>
+          <div className='flex flex-col'>
+            <Button className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105 mb-5'>Spiel Starten</Button>
+            <Button
+              className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105'
+              onClick={() => router.push('/AdminDashboard')}
+            >
+              Admin Dashboard
+            </Button>
+          </div>
         </motion.h1>
       </LampContainer>
     </div>

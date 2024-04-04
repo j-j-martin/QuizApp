@@ -46,7 +46,7 @@ export default function Loginmask() {
         </CardContent>
         <CardFooter>
           <div className='w-full'>
-            <Button className='w-full mb-4' onClick={() => router.push('/login')}>
+            <Button className='w-full mb-4' onClick={() => router.push('/UserPage')}>
               Login
             </Button>
             <Button variant='outline' className='w-full' onClick={() => router.push('/Registration')}>
