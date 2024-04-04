@@ -1,5 +1,6 @@
 import Questionrequest from '@/types/QuestionRequest'
-import { PrismaClient } from '@prisma/client'
+import QuestionWithAnswers from '@/types/QuestionsWithAnswers'
+import { Prisma, PrismaClient } from '@prisma/client'
 import { Content } from 'next/font/google'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -24,6 +25,19 @@ export async function POST(req: NextRequest, res: NextResponse) {
       },
     })
     return NextResponse.json(res)
+  } catch (error) {
+    return new Response('Invalid request body', { status: 422 })
+  }
+}
+
+export async function GET(req: NextRequest, res: NextResponse) {
+  try {
+    const questions: QuestionWithAnswers[] = await prisma.question.findMany({
+      include: {
+        answers: true
+      }
+    })
+    return NextResponse.json(questions)
   } catch (error) {
     return new Response('Invalid request body', { status: 422 })
   }
