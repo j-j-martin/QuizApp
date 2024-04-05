@@ -11,11 +11,11 @@ interface QuestionCardProps {
 const QuestionCard = ({ question, answer1, answer2, answer3, answer4 }: QuestionCardProps) => {
   return (
     <>
-      <Card>
+      <Card className='z-10 relative max-w-md max-h-lg mx-auto my-auto border-style-none'>
         <CardHeader>
           <CardTitle>{question}</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className='grid grid-cols-2'>
           <Card>
             <CardHeader>
               <CardTitle>{answer1}</CardTitle>
