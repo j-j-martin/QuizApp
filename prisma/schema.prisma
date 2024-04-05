@@ -13,6 +13,7 @@ model Game {
   id        String   @id @default(cuid())
   published Boolean  @default(false)
   GameMode  GameMode @default(SINGLEPLAYER)
+  score     Int
 }
 
 model Question {
@@ -22,8 +23,6 @@ model Question {
   updatedAt DateTime @updatedAt @map(name: "updated_at")
   answers   Answer[]
 }
-
-
 
 model Answer {
   id         String   @id @default(cuid())
