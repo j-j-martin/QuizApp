@@ -1,9 +1,9 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client'
 
 type QuestionWithAnswers = Prisma.QuestionGetPayload<{
- include: {
-    answers: true;
- };
-}>;
+  include: {
+    answers: true
+  }
+}>
 
 export default QuestionWithAnswers
