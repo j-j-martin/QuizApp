@@ -25,7 +25,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const questionsCount = await prisma.question.count()
     const questionsThisGame = Math.min(questionsCount, QUESTIONS_PER_GAME)
     const randomNumbers = getRandomNumbers(questionsCount, questionsThisGame)
-    console.log(randomNumbers)
     let questions: QuestionWithAnswers[] = []
 
     for (let i = 0; i < questionsCount; i++) {
@@ -38,7 +37,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
       })
       if (question) {
         questions.push(question[0])
-        console.log(question[0].content)
       } else {
         // Fehlerbehandlung
       }
