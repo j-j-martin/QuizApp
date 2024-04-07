@@ -1,7 +1,6 @@
 import Questionrequest from '@/types/QuestionRequest'
 import QuestionWithAnswers from '@/types/QuestionsWithAnswers'
-import { Prisma, PrismaClient } from '@prisma/client'
-import { Content } from 'next/font/google'
+import { PrismaClient } from '@prisma/client'
 import { NextRequest, NextResponse } from 'next/server'
 
 const prisma = new PrismaClient()

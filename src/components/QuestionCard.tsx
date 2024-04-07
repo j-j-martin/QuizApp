@@ -58,7 +58,7 @@ const QuestionCard = ({
 
   return (
     <>
-      <Card className='z-10 relative max-w-md max-h-lg mx-auto my-auto border-style-none'>
+      <Card className='z-10 relative max-w-lg max-h-lg mx-auto my-auto border-style-none'>
         <CardHeader>
           <CardTitle>{question}</CardTitle>
         </CardHeader>
