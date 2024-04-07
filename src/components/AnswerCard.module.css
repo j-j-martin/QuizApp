@@ -1,0 +1,18 @@
+.clicked {
+  background-color: white;
+  color: black;
+}
+
+.card:hover {
+  cursor: pointer
+}
+
+.correctAnswer {
+  background-color: #16A34A;
+  color: white;
+}
+
+.wrongAnswer {
+  background-color: #E11D48;
+  color: white;
+}
