@@ -16,8 +16,6 @@ function getRandomNumbers(n: number, count: number) {
     const j = Math.floor(Math.random() * (i + 1))
     ;[numbers[i], numbers[j]] = [numbers[j], numbers[i]]
   }
-
-  console.log(numbers.slice(0, count))
   // Return the first x numbers from the shuffled array
   return numbers.slice(0, count)
 }
@@ -31,7 +29,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     for (let i = 0; i < questionsCount; i++) {
       const question = await prisma.question.findMany({
-        skip: i,
+        skip: randomNumbers[i] - 1,
         take: 1,
         include: {
           answers: true,
