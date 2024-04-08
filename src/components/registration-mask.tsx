@@ -6,7 +6,6 @@ import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { Icons } from './ui/icons'
 import { useRouter } from 'next/navigation'
-import { BackgroundGradient } from './ui/background-gradient'
 
 export default function RegistrationMask() {
   const router = useRouter()
@@ -42,10 +41,6 @@ export default function RegistrationMask() {
           </div>
           <div className='grid gap-2'>
             <Label htmlFor='password'>Password</Label>
-            <Input id='password' type='password' />
-          </div>
-          <div className='grid gap-2'>
-            <Label htmlFor='password'>Repeat Password</Label>
             <Input id='password' type='password' />
           </div>
         </CardContent>
