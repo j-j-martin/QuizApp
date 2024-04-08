@@ -2,6 +2,7 @@
 
 import QuestionCard from '@/components/QuestionCard'
 import ScoreGrid from '@/components/ScoreGrid'
+import { ModeToggle } from '@/components/mode-toggle'
 import Navbar from '@/components/navbar'
 import QuestionWithAnswers from '@/types/QuestionsWithAnswers'
 import React, { useEffect, useState } from 'react'
@@ -93,6 +94,9 @@ const GamePage = () => {
           ) : (
             <></>
           )}
+        </div>
+        <div className='col-span-1 justify-self-end pr-6'>
+          <ModeToggle />
         </div>
       </div>
     </>

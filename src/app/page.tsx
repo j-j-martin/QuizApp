@@ -28,33 +28,6 @@ export default async function Component() {
   if (!user) {
     return redirect('/login')
   }
-  // const router = useRouter()
-  // const [user, setUser] = useState<User | null>(null)
 
-  // useEffect(() => {
-  //   async function fetchUser() {
-  //     const { user } = await validateRequest()
-  //     if (!user) {
-  //       router.push('/login')
-  //     } else {
-  //       setUser(user)
-  //     }
-  //   }
-
-  //   fetchUser()
-  // }, [router])
-
-  // if (!user) {
-  //   return null
-  // }
-  return (
-    // <>
-    //   <h1>Hi, {user.username}!</h1>
-    //   <p>Your user ID is {user.id}.</p>
-    //   <form action={logout}>
-    //     <button>Sign out</button>
-    //   </form>
-    // </>
-    <UserDashboard user={user} logout={logout} />
-  )
+  return <UserDashboard user={user} logout={logout} />
 }
