@@ -1,12 +1,21 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import React from 'react'
 import { LampContainer } from '@/components/ui/lamp'
 import { motion } from 'framer-motion'
+import { User } from 'lucia'
 import { useRouter } from 'next/navigation'
 
-const UserPage = () => {
+interface ActionResult {
+  error: string | null
+}
+
+interface UserDashboardProps {
+  user: User
+  logout: () => Promise<ActionResult>
+}
+
+export default function UserDashboard({ user, logout }: UserDashboardProps) {
   const router = useRouter()
   return (
     <div className='flex flex-col w-full h-[100vh] content-center relative z-2'>
@@ -22,17 +31,26 @@ const UserPage = () => {
           className='mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl'
         >
           <div className='mb-32'>
-            Wilkommen <br /> Username
+            Willkommen <br /> {user.username}
           </div>
           <div className='flex flex-col'>
-            <Button className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105 mb-5'>
+            <Button
+              className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105 mb-5'
+              onClick={() => router.push('/Game')}
+            >
               Spiel Starten
             </Button>
             <Button
-              className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105'
+              className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105 mb-5'
               onClick={() => router.push('/AdminDashboard')}
             >
               Admin Dashboard
+            </Button>
+            <Button
+              className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105'
+              onClick={() => logout()}
+            >
+              Logout
             </Button>
           </div>
         </motion.h1>

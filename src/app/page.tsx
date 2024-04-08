@@ -1,8 +1,7 @@
-import Navbar from '@/components/navbar'
-import Loginmask from '@/components/login-mask'
 import { lucia, validateRequest } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
+import UserDashboard from './UserDashboard'
 
 async function logout(): Promise<ActionResult> {
   'use server'
@@ -29,13 +28,6 @@ export default async function Component() {
   if (!user) {
     return redirect('/login')
   }
-  return (
-    <>
-      <h1>Hi, {user.username}!</h1>
-      <p>Your user ID is {user.id}.</p>
-      <form action={logout}>
-        <button>Sign out</button>
-      </form>
-    </>
-  )
+
+  return <UserDashboard user={user} logout={logout} />
 }
