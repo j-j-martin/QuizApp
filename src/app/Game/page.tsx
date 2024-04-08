@@ -23,7 +23,7 @@ const GamePage = () => {
 
   useEffect(() => {
     const fetchQuestions = async () => {
-      const data = await fetch('/api/Questions/random', {
+      const data = await fetch('/api/questions/random', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -94,9 +94,6 @@ const GamePage = () => {
           ) : (
             <></>
           )}
-        </div>
-        <div className='col-span-1 justify-self-end pr-6'>
-          <ModeToggle />
         </div>
       </div>
     </>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, waitFor, screen } from '@testing-library/react'
-import GamePage from '@/app/Game/page'
+import GamePage from '@/app/game/page'
 import fetchMock from 'jest-fetch-mock'
 import '@testing-library/jest-dom'
 import QuestionWithAnswers from '@/types/QuestionsWithAnswers'

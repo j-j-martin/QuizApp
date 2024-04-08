@@ -3,7 +3,15 @@
 import React, { useState, useEffect, ChangeEventHandler } from 'react'
 import { Table, TableHead, TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { PrismaClient } from '@prisma/client'
@@ -14,10 +22,15 @@ async function GetQuestions() {
   const allQuestions = await prisma.question.findMany()
 }
 
-async function handleSaveQuestion(Question: string, Answer1: string, Answer2: string, Answer3: string, Answer4: string) {
-  
+async function handleSaveQuestion(
+  Question: string,
+  Answer1: string,
+  Answer2: string,
+  Answer3: string,
+  Answer4: string,
+) {
   const questionRequest: Questionrequest = { content: Question, answers: [Answer1, Answer2, Answer3, Answer4] }
-  await fetch('/api/Questions', {
+  await fetch('/api/questions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +47,10 @@ const AdminDashboard = () => {
   const [Answer3, setAnswer3] = useState('')
   const [Answer4, setAnswer4] = useState('')
 
-  function HandleInputChange(event: React.ChangeEvent<HTMLInputElement>, setValue: React.Dispatch<React.SetStateAction<string>>): void {
+  function HandleInputChange(
+    event: React.ChangeEvent<HTMLInputElement>,
+    setValue: React.Dispatch<React.SetStateAction<string>>,
+  ): void {
     setValue(event.target.value)
   }
 
@@ -54,17 +70,42 @@ const AdminDashboard = () => {
               <Label htmlFor='name' className='text-right'>
                 Question:
               </Label>
-              <Input id='name' className='col-span-3' value={Question} onChange={event => HandleInputChange(event, setQuestion)} />
+              <Input
+                id='name'
+                className='col-span-3'
+                value={Question}
+                onChange={event => HandleInputChange(event, setQuestion)}
+              />
             </div>
             <div className='grid grid-cols-4 items-center gap-4'>
               <Label className='text-right'>Answer 1:</Label>
-              <Input id='answer1' className='col-span-3' value={Answer1} onChange={event => HandleInputChange(event, setAnswer1)} />
+              <Input
+                id='answer1'
+                className='col-span-3'
+                value={Answer1}
+                onChange={event => HandleInputChange(event, setAnswer1)}
+              />
               <Label className='text-right'>Answer 2:</Label>
-              <Input id='answer2' className='col-span-3' value={Answer2} onChange={event => HandleInputChange(event, setAnswer2)} />
+              <Input
+                id='answer2'
+                className='col-span-3'
+                value={Answer2}
+                onChange={event => HandleInputChange(event, setAnswer2)}
+              />
               <Label className='text-right'>Answer 3:</Label>
-              <Input id='answer3' className='col-span-3' value={Answer3} onChange={event => HandleInputChange(event, setAnswer3)} />
+              <Input
+                id='answer3'
+                className='col-span-3'
+                value={Answer3}
+                onChange={event => HandleInputChange(event, setAnswer3)}
+              />
               <Label className='text-right'>Answer 4:</Label>
-              <Input id='answer4' className='col-span-3' value={Answer4} onChange={event => HandleInputChange(event, setAnswer4)} />
+              <Input
+                id='answer4'
+                className='col-span-3'
+                value={Answer4}
+                onChange={event => HandleInputChange(event, setAnswer4)}
+              />
             </div>
           </div>
           <DialogFooter>
