@@ -31,7 +31,7 @@ export default function UserDashboard({ user, logout }: UserDashboardProps) {
           className='mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl'
         >
           <div className='mb-32'>
-            Wilkommen <br /> {user.username}
+            Willkommen <br /> {user.username}
           </div>
           <div className='flex flex-col'>
             <Button
