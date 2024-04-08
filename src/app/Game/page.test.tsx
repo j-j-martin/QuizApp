@@ -20,7 +20,7 @@ it('renders the Navbar and QuestionCard with fetched data', async () => {
         answers: [
           {
             id: '0',
-            content: 'Answer1',
+            content: 'Answer 1',
             isCorrect: true,
             createdAt: new Date(),
             updatedAt: new Date(),
@@ -28,7 +28,7 @@ it('renders the Navbar and QuestionCard with fetched data', async () => {
           },
           {
             id: '1',
-            content: 'Answer2',
+            content: 'Answer 2',
             isCorrect: false,
             createdAt: new Date(),
             updatedAt: new Date(),
@@ -36,7 +36,7 @@ it('renders the Navbar and QuestionCard with fetched data', async () => {
           },
           {
             id: '2',
-            content: 'Answer3',
+            content: 'Answer 3',
             isCorrect: false,
             createdAt: new Date(),
             updatedAt: new Date(),
@@ -44,7 +44,7 @@ it('renders the Navbar and QuestionCard with fetched data', async () => {
           },
           {
             id: '3',
-            content: 'Answer4',
+            content: 'Answer 4',
             isCorrect: false,
             createdAt: new Date(),
             updatedAt: new Date(),
