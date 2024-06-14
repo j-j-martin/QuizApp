@@ -29,7 +29,7 @@ export default async function Page() {
   return (
     <div className='antialiased'>
       <Navbar />
-      Sekunden bis Shirleys 30: {counter}
+      Sekunden bis Shirleys 30en: {counter}
       {/* <Loginmask /> */}
     </div>
   )
