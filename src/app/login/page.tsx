@@ -1,10 +1,12 @@
+'use client'
+
 import Loginmask from '@/components/login-mask'
 import Navbar from '@/components/navbar'
 import { validateRequest } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-export default async function Page() {
+export default function Page() {
   // const { user } = await validateRequest()
   // if (user) {
   //   return redirect('/')
