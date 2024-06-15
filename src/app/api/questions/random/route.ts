@@ -43,6 +43,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
     }
     return NextResponse.json(questions)
   } catch (error) {
-    return new Response('Invalid request body', { status: 422 })
+    return new Response('Invalid request bodies', { status: 422 })
   }
 }

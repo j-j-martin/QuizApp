@@ -25,7 +25,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     })
     return NextResponse.json(res)
   } catch (error) {
-    return new Response('Invalid request body', { status: 422 })
+    return new Response('Invalid request bodies', { status: 422 })
   }
 }
 
