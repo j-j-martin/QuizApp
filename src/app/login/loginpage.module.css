@@ -1,0 +1,32 @@
+.countdownParagraph {
+  font-size: 1.7rem;
+  margin-top: 0.5rem;
+}
+
+.countdownDiv {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.countdownHeading {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.splitContainer {
+  display: grid;
+  grid-gap: 1.6rem;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 30px;
+  width: 20rem;
+}
+
+.numberColumn {
+  justify-self: end;
+  font-weight: bold;
+}
