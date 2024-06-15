@@ -30,3 +30,23 @@
   justify-self: end;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 600px) {
+  .countdownDiv {
+    margin-top: 10px;
+  }
+
+  .splitContainer {
+    margin-top: 20px;
+  }
+
+  .countdownHeading {
+    font-size: 1.8rem;
+  }
+
+  .countdownParagraph {
+    font-size: 1.6rem;
+  }
+
+  
+}
