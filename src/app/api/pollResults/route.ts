@@ -53,3 +53,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return new Response('Invalid request body', { status: 422 })
   }
 }
+
+export async function OPTIONS(req: NextRequest, res: NextResponse) {
+  return res.ok
+}
