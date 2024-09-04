@@ -53,5 +53,5 @@ export async function POST(req: NextRequest, res: NextResponse) {
 }
 
 export async function OPTIONS(req: NextRequest, res: NextResponse) {
-  return res.ok
+  return NextResponse.json(null, { status: 200 })
 }
