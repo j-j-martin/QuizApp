@@ -1,3 +1,4 @@
+import { handleCors } from '@/lib/cors'
 import PollAnswer from '@/types/PollAnswer'
 import PollQuestionWithAnswers from '@/types/PollQuestionWithAnswers'
 import { NextRequest, NextResponse } from 'next/server'
@@ -44,6 +45,7 @@ function generateSurveyResults(questions: string[]): PollQuestionWithAnswers[] {
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
+    handleCors(req, res)
     const request: string[] = await req.json()
     const pollResults = generateSurveyResults(request)
     return NextResponse.json(pollResults)
