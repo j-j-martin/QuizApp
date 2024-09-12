@@ -95,6 +95,9 @@ const GamePage = () => {
             <></>
           )}
         </div>
+        <div className='col-span-1 justify-self-end pr-6'>
+          <ModeToggle />
+        </div>
       </div>
     </>
   )
