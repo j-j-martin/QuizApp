@@ -15,7 +15,7 @@ interface UserDashboardProps {
   logout: () => Promise<ActionResult>
 }
 
-export default function UserDashboard({ user, logout }: UserDashboardProps) {
+export default function UserDashboard(/*{ user, logout }: UserDashboardProps*/) {
   const router = useRouter()
   return (
     <div className='flex flex-col w-full h-[100vh] content-center relative z-2'>
@@ -30,9 +30,7 @@ export default function UserDashboard({ user, logout }: UserDashboardProps) {
           }}
           className='mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl'
         >
-          <div className='mb-32'>
-            Welcome <br /> {user.username}
-          </div>
+          <div className='mb-32'>Welcome {/*<br /> {user.username}*/}</div>
           <div className='flex flex-col'>
             <Button
               className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105 mb-5'
@@ -46,12 +44,12 @@ export default function UserDashboard({ user, logout }: UserDashboardProps) {
             >
               Admin Dashboard
             </Button> */}
-            <Button
+            {/* <Button
               className='mx-auto my-auto h-16 w-48 text-xl transition ease-in-out delay-150 hover:scale-105'
               onClick={() => logout()}
             >
               Logout
-            </Button>
+            </Button> */}
           </div>
         </motion.h1>
       </LampContainer>

@@ -24,10 +24,10 @@ interface ActionResult {
 }
 
 export default async function Component() {
-  const { user } = await validateRequest()
-  if (!user) {
-    return redirect('/login')
-  }
+  // const { user } = await validateRequest()
+  // if (!user) {
+  //   return redirect('/login')
+  // }
 
-  return <UserDashboard user={user} logout={logout} />
+  return <UserDashboard /*user={user} logout={logout}*/ />
 }
