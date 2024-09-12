@@ -14,7 +14,7 @@ export default function Loginmask() {
       <Card className='z-10 relative max-w-md max-h-lg mx-auto my-auto mt-56 border-style-none'>
         <CardHeader className='space-y-1'>
           <CardTitle className='text-2xl'>Login</CardTitle>
-          <CardDescription>Noah Stinkt echt dolle und Jermaine ist nicht alt</CardDescription>
+          <CardDescription>Login bra</CardDescription>
         </CardHeader>
         <CardContent className='grid gap-4'>
           <div className='grid grid-cols-2 gap-6'>

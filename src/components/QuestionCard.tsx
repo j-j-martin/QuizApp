@@ -48,10 +48,10 @@ const QuestionCard = ({
   function handleAnswerButtonClick(): void {
     if (!isAnswerButtonClicked) {
       setIsCorrect(clickedAnswer === shuffledAnswers.findIndex(x => x === correctAnswer))
-      setAnswerButtonText('Nächste Frage')
+      setAnswerButtonText('Next Question')
     } else {
       setIsNextButtonClicked(true)
-      setAnswerButtonText('Bestätigen')
+      setAnswerButtonText('Confirm')
     }
     setIsAnswerButtonClicked(!isAnswerButtonClicked)
   }

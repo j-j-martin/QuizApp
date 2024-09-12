@@ -16,36 +16,42 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { PrismaClient } from '@prisma/client'
 import Questionrequest from '@/types/QuestionRequest'
+import { redirect } from 'next/navigation'
 
 const prisma = new PrismaClient()
 async function GetQuestions() {
   const allQuestions = await prisma.question.findMany()
 }
 
-async function handleSaveQuestion(
-  Question: string,
-  Answer1: string,
-  Answer2: string,
-  Answer3: string,
-  Answer4: string,
-) {
-  const questionRequest: Questionrequest = { content: Question, answers: [Answer1, Answer2, Answer3, Answer4] }
-  await fetch('/api/questions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-
-    body: JSON.stringify(questionRequest),
-  })
-}
-
 const AdminDashboard = () => {
+  // For AP 2 App, delete later
+  useEffect(() => {
+    redirect('/')
+  }, [])
+
   const [Question, setQuestion] = useState('')
   const [Answer1, setAnswer1] = useState('')
   const [Answer2, setAnswer2] = useState('')
   const [Answer3, setAnswer3] = useState('')
   const [Answer4, setAnswer4] = useState('')
+
+  async function handleSaveQuestion() {
+    const questionRequest: Questionrequest = { content: Question, answers: [Answer1, Answer2, Answer3, Answer4] }
+    setQuestion('')
+    setAnswer1('')
+    setAnswer2('')
+    setAnswer3('')
+    setAnswer4('')
+
+    await fetch('/api/Questions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+
+      body: JSON.stringify(questionRequest),
+    })
+  }
 
   function HandleInputChange(
     event: React.ChangeEvent<HTMLInputElement>,
@@ -109,7 +115,7 @@ const AdminDashboard = () => {
             </div>
           </div>
           <DialogFooter>
-            <Button type='submit' onClick={() => handleSaveQuestion(Question, Answer1, Answer2, Answer3, Answer4)}>
+            <Button type='submit' onClick={handleSaveQuestion}>
               Save
             </Button>
           </DialogFooter>
